@@ -1,0 +1,10 @@
+[project]
+name = "monitoring-probes"
+version = "1.0"
+requires-python = ">=3.7"
+dependencies = [
+    "prometheus-client",
+    "fastapi[standard] ; python_version >= '3.8'",
+    "aiohttp",
+    "asyncmy ; python_version <'4.0'",
+]
