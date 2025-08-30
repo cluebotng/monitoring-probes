@@ -11,6 +11,9 @@ from prometheus_client import (
     PLATFORM_COLLECTOR,
 )
 
+from monitoring_probes.checks.mediawiki_bot_allowed_to_run import (
+    get_bot_administrator_allow_run,
+)
 from monitoring_probes.checks.mediawiki_contribution_time import (
     get_last_user_contribution_time,
 )
@@ -45,6 +48,8 @@ async def _render_metrics():
         get_last_user_contribution_time("ClueBot NG Review Interface"),
         get_recent_user_contributions_count("ClueBot NG", recent_window_start_time),
         get_recent_user_contributions_count("ClueBot III", recent_window_start_time),
+        get_bot_administrator_allow_run("ClueBot NG"),
+        get_bot_administrator_allow_run("ClueBot III"),
     )
 
     return generate_latest()
